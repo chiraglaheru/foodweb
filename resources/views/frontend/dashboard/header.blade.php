@@ -1,28 +1,4 @@
-<!doctype html>
-<html lang="en">
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="Askbootstrap">
-      <meta name="author" content="Askbootstrap">
-      <title>User Dashboard - Online Food Ordering Website</title>
-      <!-- Favicon Icon -->
-      <link rel="icon" type="image/png" href="{{ asset('frontend/img/favicon.png') }}">
-      <!-- Bootstrap core CSS-->
-      <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-      <!-- Font Awesome-->
-      <link href="{{ asset('frontend/vendor/fontawesome/css/all.min.css') }}" rel="stylesheet">
-      <!-- Font Awesome-->
-      <link href="{{ asset('frontend/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
-      <!-- Select2 CSS-->
-      <link href="{{ asset('frontend/vendor/select2/css/select2.min.css') }}" rel="stylesheet">
-      <!-- Custom styles for this template-->
-      <link href="{{ asset('frontend/css/osahan.css') }}" rel="stylesheet">
-   </head>
-   <body>
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
          <div class="container">
             <a class="navbar-brand" href="{{ route('index') }}"><img alt="logo" src="{{ asset('frontend/img/logo.png') }}"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,23 +16,32 @@
                      <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      Restaurants
                      </a>
-
                   </li>
-      @php
-      $id = Auth::user()->id;
-      $profileData = App\Models\User::find($id);
-   @endphp
+
+                  @php
+                  // Check if the user is authenticated
+                  $profileData = Auth::check() ? App\Models\User::find(Auth::user()->id) : null;
+                  @endphp
 
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     @if ($profileData)
                      <img alt="Generic placeholder image" src="{{ (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" class="nav-osahan-pic rounded-pill"> My Account
+                     @else
+                     <i class="fas fa-user-circle"></i> My Account
+                     @endif
                      </a>
                      <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+                        @if ($profileData)
                         <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="icofont-food-cart"></i> Dashboard</a>
                         <a class="dropdown-item" href="{{ route('user.logout') }}"><i class="icofont-sale-discount"></i> Logout </a>
-
+                        @else
+                        <a class="dropdown-item" href="{{ route('login') }}"><i class="icofont-login"></i> Login</a>
+                        <a class="dropdown-item" href="{{ route('register') }}"><i class="icofont-user"></i> Register</a>
+                        @endif
                      </div>
                   </li>
+
                   <li class="nav-item dropdown dropdown-cart">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <i class="fas fa-shopping-basket"></i> Cart
@@ -89,3 +74,8 @@
             </div>
          </div>
       </nav>
+
+      <!-- Your content goes here -->
+
+   </body>
+</html>

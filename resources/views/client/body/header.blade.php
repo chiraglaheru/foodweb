@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="24">
+                        <img src="{{ asset('backend/assets/images/logo-sm.svg') }}" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Client</span>
+                        <img src="{{ asset('backend/assets/images/logo-sm.svg') }}" alt="" height="24"> <span class="logo-txt">Client</span>
                     </span>
                 </a>
 
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="24">
+                        <img src="{{ asset('backend/assets/images/logo-sm.svg') }}" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Client</span>
+                        <img src="{{ asset('backend/assets/images/logo-sm.svg') }}" alt="" height="24"> <span class="logo-txt">Client</span>
                     </span>
                 </a>
             </div>
@@ -57,13 +57,17 @@
                 </div>
             </div>
 
+
+
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item" id="mode-setting-btn">
                     <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
                     <i data-feather="sun" class="icon-lg layout-mode-light"></i>
                 </button>
             </div>
-.
+
+
+
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -158,10 +162,12 @@
                     <i data-feather="settings" class="icon-lg"></i>
                 </button>
             </div>
-@php
-      $id= Auth::guard('client')->id();
-      $profileData= App\Models\Client::find($id);
-@endphp
+
+            @php
+                 $id = Auth::guard('client')->id();
+                 $profileData = App\Models\Client::find($id);
+            @endphp
+
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item bg-light-subtle border-start border-end" id="page-header-user-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -172,20 +178,12 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="{{ route('client.profile') }}">
-                        <i class="mdi mdi mdi-face-man font-size-16 align-middle me-1"></i> Profile
-                    </a>
-                    <a class="dropdown-item" href="{{ route('client.change.password') }}">
-                        <i class="mdi mdi-lock font-size-16 align-middle me-1"></i> Change Password </a>
+                    <a class="dropdown-item" href="{{ route('client.profile') }}"><i class="mdi mdi mdi-face-man font-size-16 align-middle me-1"></i> Profile</a>
+                    <a class="dropdown-item" href="{{ route('client.change.password') }}"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> Change Password</a>
                     <div class="dropdown-divider"></div>
-                    <!-- Updated Logout -->
-                    <form method="POST" action="{{ route('client.logout') }}" style="display: inline;">
-                        @csrf
-                        <button type="submit" class="dropdown-item">
-                            <i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout
-                        </button>
-                    </form>
+                    <a class="dropdown-item" href="{{ route('client.logout') }}"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
                 </div>
+            </div>
 
         </div>
     </div>

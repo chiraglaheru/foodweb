@@ -75,7 +75,7 @@
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <div class="">
-                                                            <a href="{{ route('admin.forgot_password_form') }}" class="text-muted">Forgot password?</a>
+                                                            {{-- <a href="{{ route('admin.forgot_password') }}" class="text-muted">Forgot password?</a> --}}
 
                                                         </div>
                                                     </div>

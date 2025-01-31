@@ -17,7 +17,7 @@
                         </ol>
                     </div>
 
-                </div> 
+                </div>
             </div>
         </div>
         <!-- end page title -->
@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <!-- card -->
-                
+
                 <div class="card card-h-100">
                     <!-- card body -->
                     <div class="card-body">

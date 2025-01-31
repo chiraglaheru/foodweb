@@ -70,21 +70,16 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,  // Correct model for users
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\Admin::class),
+            'model' => App\Models\Admin::class,  // Explicit model for admin
         ],
         'clients' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\client::class),
+            'model' => App\Models\Client::class, // Explicit model for client
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

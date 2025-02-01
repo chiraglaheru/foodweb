@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
    <head>
@@ -83,7 +84,7 @@
 
 
 
-      ------------ Wishlist Add Start -----------
+      {{-- ------------ Wishlist Add Start ----------- --}}
       <script type="text/javascript">
          $.ajaxSetup({
             headers:{

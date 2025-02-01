@@ -5,6 +5,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="Askbootstrap">
+<meta name="csrf_token" content="{{ csrf_token() }}">
+
       <meta name="author" content="Askbootstrap">
       <title>User Dashboard - Online Food Ordering Website</title>
       <!-- Favicon Icon -->
@@ -22,6 +24,7 @@
 
       <link rel="stylesheet" href="{{ asset('frontend/vendor/owl-carousel/owl.carousel.css') }}">
       <link rel="stylesheet" href="{{ asset('frontend/vendor/owl-carousel/owl.theme.css') }}">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
@@ -70,7 +73,14 @@
  }
  @endif
 </script>
-
+<script>
+     <script type="text/javascript">
+         $.ajaxSetup({
+            headers:{
+               'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            }
+         });
+    </script>
 
 </body>
 </html>

@@ -168,7 +168,10 @@ Route::middleware('client')->group(function () {
     Route::get('/restaurant/details/{id}', 'RestaurantDetails')->name('res.details');
 
 });
-    Route::controller(CartController::class)->group(function(){
+Route::controller(CartController::class)->group(function(){
     Route::get('/add_to_cart/{id}', 'AddToCart')->name('add_to_cart');
+    Route::get('/add_to_cart/{id}', 'AddToCart')->name('add_to_cart');
+    Route::post('/cart/update-quantity', 'updateCartQuanity')->name('cart.updateQuantity');
+    Route::post('/cart/remove', 'CartRemove')->name('cart.remove');  
 
 });

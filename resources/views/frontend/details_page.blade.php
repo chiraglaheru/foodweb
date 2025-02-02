@@ -468,7 +468,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
       <p class="seven-color mb-1 text-right">Extra charges may apply</p>
       <p class="text-black mb-0 text-right">You have saved $955 on the bill</p>
    </div>
-                <a href="checkout.html" class="btn btn-success btn-block btn-lg">Checkout <i class="icofont-long-arrow-right"></i></a>
+                <a href="{{ route('checkout') }}" class="btn btn-success btn-block btn-lg">Checkout <i class="icofont-long-arrow-right"></i></a>
              </div>
 
              <div class="text-center pt-2 mb-4">

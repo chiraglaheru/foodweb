@@ -11,6 +11,7 @@ use App\Http\Controllers\Client\CouponController;
 use App\Http\Controllers\Admin\ManageController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\OrderController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -172,6 +173,15 @@ Route::controller(CartController::class)->group(function(){
     Route::get('/add_to_cart/{id}', 'AddToCart')->name('add_to_cart');
     Route::get('/add_to_cart/{id}', 'AddToCart')->name('add_to_cart');
     Route::post('/cart/update-quantity', 'updateCartQuanity')->name('cart.updateQuantity');
-    Route::post('/cart/remove', 'CartRemove')->name('cart.remove');  
+    Route::post('/cart/remove', 'CartRemove')->name('cart.remove');
+    Route::get('/checkout', 'ShopCheckout')->name('checkout');
 
 });
+Route::controller(OrderController::class)->group(function(){
+    Route::get('/cash_order', 'CashOrder')->name('cash_order');
+
+});
+Route::get('/checkout/thanks', function () {
+    return view('frontend.checkout.thanks');
+})->name('thanks');
+

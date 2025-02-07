@@ -243,7 +243,7 @@
 
 
 
-   <a href="{{ route('thanks') }}" class="btn btn-success btn-block btn-lg">PAY
+   <a href="{{ route('frontend.checkout.thanks') }}" class="btn btn-success btn-block btn-lg">PAY</a>
             @if (Session::has('coupon'))
             ${{ Session()->get('coupon')['discount_amount'] }}
             @else

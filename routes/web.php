@@ -13,6 +13,8 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Admin\ManageOrderController;
+use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Frontend\ReviewController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -36,11 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/all/wishlist', [HomeController::class, 'AllWishlist'])->name('all.wishlist');
     Route::get('/remove/wishlist/{id}', [HomeController::class, 'RemoveWishlist'])->name('remove.wishlist');
 
-
     Route::controller(ManageOrderController::class)->group(function(){
         Route::get('/user/order/list', 'UserOrderList')->name('user.order.list');
-        Route::get('/user/order/details{id}', 'UserOrderDetails')->name('user.order.details');
-        Route::get('/user/invoice/download/{id}', 'UserInvoiceDownload')->name('user.invoice.download'); 
+        Route::get('/user/order/details/{id}', 'UserOrderDetails')->name('user.order.details');
+        Route::get('/user/invoice/download/{id}', 'UserInvoiceDownload')->name('user.invoice.download');
 
     });
 
@@ -75,7 +76,7 @@ Route::middleware('client')->group(function () {
     Route::get('/client/profile', [ClientController::class, 'ClientProfile'])->name('client.profile');
     Route::post('/client/profile/store', [ClientController::class, 'ClientProfileStore'])->name('client.profile.store');
     Route::get('/client/change/password', [ClientController::class, 'ClientChangePassword'])->name('client.change.password');
-    Route::get('/client/password/update', [ClientController::class, 'ClientPasswordUpdate'])->name('client.password.update');
+    Route::post('/client/password/update', [ClientController::class, 'ClientPasswordUpdate'])->name('client.password.update');
 
 });
 
@@ -146,6 +147,20 @@ Route::middleware('admin')->group(function () {
 
     });
 
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('/admin/all/reports', 'AminAllReports')->name('admin.all.reports');
+        Route::post('/admin/search/bydate', 'AminSearchByDate')->name('admin.search.bydate');
+        Route::post('/admin/search/bymonth', 'AminSearchByMonth')->name('admin.search.bymonth');
+        Route::post('/admin/search/byyear', 'AminSearchByYear')->name('admin.search.byyear');
+    });
+
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/admin/pending/review', 'AdminPendingReview')->name('admin.pending.review');
+        Route::get('/admin/approve/review', 'AdminApproveReview')->name('admin.approve.review');
+        Route::get('/reviewchangeStatus', 'ReviewChangeStatus');
+
+    });
+
 
 }); // End Admin Middleware
 
@@ -192,6 +207,14 @@ Route::middleware(['client','status'])->group(function () {
 
     Route::controller(ManageOrderController::class)->group(function(){
         Route::get('/all/client/orders', 'AllClientOrders')->name('all.client.orders');
+        Route::get('/client/order/details/{id}', 'ClientOrderDetails')->name('client.order.details');
+    });
+
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('/client/all/reports', 'ClientAllReports')->name('client.all.reports');
+        Route::post('/client/search/bydate', 'ClientSearchByDate')->name('client.search.bydate');
+        Route::post('/client/search/bymonth', 'ClientSearchByMonth')->name('client.search.bymonth');
+        Route::post('/client/search/byyear', 'ClientSearchByYear')->name('client.search.byyear');
     });
 
 
@@ -199,10 +222,11 @@ Route::middleware(['client','status'])->group(function () {
  // End Client Middleware
 
  /// That will be for all user
+ Route::get('/changeStatus', [RestaurantController::class, 'ChangeStatus']);
 
  Route::controller(HomeController::class)->group(function(){
-     Route::get('/restaurant/details/{id}', 'RestaurantDetails')->name('res.details');
-     Route::post('/add-wish-list/{id}', 'AddWishList');
+    Route::get('/restaurant/details/{id}', 'RestaurantDetails')->name('res.details');
+    Route::post('/add-wish-list/{id}', 'AddWishList');
 
 });
 
@@ -220,11 +244,7 @@ Route::controller(OrderController::class)->group(function(){
 
 });
 
-Route::controller(ManageOrderController::class)->group(function(){
-    Route::get('/all/client/orders', 'AllClientOrders')->name('all.client.orders');
-});
+Route::controller(ReviewController::class)->group(function(){
+    Route::post('/store/review', 'StoreReview')->name('store.review');
 
-Route::controller(ManageOrderController::class)->group(function(){
-    Route::get('/client/order/details/{id}', 'ClientOrderDetails')->name('client.order.details');
 });
-

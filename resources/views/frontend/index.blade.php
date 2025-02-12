@@ -25,11 +25,17 @@
   @endphp
 
 
+@php
+$reviewcount = App\Models\Review::where('client_id',$client->id)->where('status',1)->latest()->get();
+$average = App\Models\Review::where('client_id',$client->id)->where('status',1)->avg('rating');
+@endphp
+
+
    <div class="col-md-3">
          <div class="item pb-3">
             <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                <div class="list-card-image">
-                  <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+                  <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> {{ number_format($average,1) }} ({{ count($reviewcount) }}+)</span></div>
                   <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i class="icofont-heart"></i></a></div>
                   @if ($coupons)
                   <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>

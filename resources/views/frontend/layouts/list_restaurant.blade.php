@@ -1,3 +1,4 @@
+
 @extends('frontend.dashboard.dashboard')
 @section('dashboard')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -200,15 +201,15 @@ $menus = App\Models\Menu::orderBy('id','desc')->limit(10)->get();
             citits: [],
             menus: []
          };
-         // console.log(filters);
-      $('filter-checkbox:chekced').each(function(){
+          console.log(filters);
+      $('.filter-checkbox:checked').each(function(){
          var type = $(this).data('type');
          var id = $(this).data('id');
 
          if (!filters[type + 's']) {
             filters[type + 's'] = [];
          }
-         filters[type + 's'].push(id)
+         filters[type + 's'].push(id);
       });
 
       $.ajax({

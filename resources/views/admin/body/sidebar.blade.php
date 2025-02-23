@@ -154,6 +154,19 @@
             </ul>
         </li>
 
+
+        <li>
+            <a href="javascript: void(0);" class="has-arrow">
+                <i data-feather="briefcase"></i>
+                <span data-key="t-components">Role & Permission</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('all.permission') }}" data-key="t-alerts">All Permission</a></li>
+
+
+            </ul>
+        </li>
+
         <li>
             <a href="javascript: void(0);" class="has-arrow">
                 <i data-feather="gift"></i>

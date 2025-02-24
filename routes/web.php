@@ -172,6 +172,7 @@ Route::middleware('admin')->group(function () {
         Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
         Route::get('/import/permission', 'ImportPermission')->name('import.permission');
         Route::get('/export', 'Export')->name('export');
+        Route::post('/import', 'Import')->name('import');
 
     });
 
@@ -255,6 +256,7 @@ Route::controller(CartController::class)->group(function(){
 
 Route::controller(OrderController::class)->group(function(){
     Route::post('/cash_order', 'CashOrder')->name('cash_order');
+    Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
 
 });
 

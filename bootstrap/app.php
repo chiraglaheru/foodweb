@@ -11,11 +11,20 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Register middleware aliases
         $middleware->alias([
-            'admin'=> App\Http\Middleware\Admin::class,
-            'client'=> App\Http\Middleware\Client::class
-    ]);
+            'admin' => App\Http\Middleware\Admin::class,
+            'client' => App\Http\Middleware\Client::class,
+            'status' => App\Http\Middleware\StatusMiddleware::class, // Added status middleware
+        ]);
+
+        
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
-    })->create();
+        // Custom exception handling can be added here
+        // Example:
+        // $exceptions->report(function (CustomException $e) {
+        //     // Handle the exception
+        // });
+    })
+    ->create();

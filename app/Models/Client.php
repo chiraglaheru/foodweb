@@ -7,26 +7,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class client extends Authenticatable
+class Client extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
-
-        protected $guarded = [];
-        protected $guard = 'client';
+     protected $guard = 'client';
+     protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
-      protected $hidden = [
+    protected $hidden = [
         'password',
         'remember_token',
     ];

@@ -13,7 +13,7 @@
                 <a class="nav-link" href="offers.html"><i class="icofont-sale-discount"></i> Offers <span class="badge badge-warning">New</span></a>
              </li>
              <li class="nav-item dropdown">
-                <a class="nav-link" href="{{ route('list.restaurant') }}" role="button"  aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="{{ route('list.restaurant') }}" role="button" aria-haspopup="true" aria-expanded="false">
                 Restaurants
                 </a>
 
@@ -62,9 +62,9 @@
 
              $clients = App\Models\Client::whereIn('id',array_keys($groupedCart))->get()->keyBy('id');
 
-            @endphp
+          @endphp
 
-            <li class="nav-item dropdown dropdown-cart">
+          <li class="nav-item dropdown dropdown-cart">
              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              <i class="fas fa-shopping-basket"></i> Cart
              <span class="badge badge-success">{{ count((array) session('cart')) }}</span>
@@ -111,7 +111,7 @@
                    <a class="btn btn-success btn-block btn-lg" href="{{ route('checkout') }}"> Checkout</a>
                 </div>
              </div>
-            </li>
+          </li>
           </ul>
        </div>
     </div>

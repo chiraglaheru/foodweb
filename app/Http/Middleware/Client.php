@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
+
 class Client
 {
     /**
@@ -17,10 +18,9 @@ class Client
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::guard('client')->check()) {
-            return redirect()
-                ->route('client.login')
-                ->with('error', 'No login detected, permission denied');
-        }
+            return redirect()->route('client.login')->with('error','You do not have permission to access this page');
+         }
+
         return $next($request);
     }
 }

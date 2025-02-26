@@ -37,23 +37,23 @@
              </div>
              <h6 class="mt-4 text-shadow text-white font-weight-normal">E.g. Beverages, Pizzas, Chinese, Bakery, Indian...</h6>
              <div class="owl-carousel owl-carousel-category owl-theme">
-
-                @php
-                $products = App\Models\Product::latest()->limit(8)->get();
-                @endphp
-@foreach ($products as $product )
-
-<div class="item">
-    <div class="osahan-category-item">
-        <a href="#">
-            <img class="img-fluid" src="{{ asset($product->image) }}" alt="">
-                         <h6>{{ Str::limit($product->name,8) }}</h6>
+    @php
+       $products = App\Models\Product::latest()->limit(8)->get();
+    @endphp
+              @foreach ($products  as $product)
+              <div class="item">
+                   <div class="osahan-category-item">
+                      <a href="#">
+                         <img class="img-fluid" src="{{ asset($product->image ) }}" alt="">
+                         <h6>{{ Str::limit($product->name, 8)  }}</h6>
                          <p>${{ $product->price }}</p>
-                        </a>
-                    </div>
+                      </a>
+                   </div>
                 </div>
-                    @endforeach
-                </div>
+                @endforeach
+
+
+
              </div>
           </div>
 

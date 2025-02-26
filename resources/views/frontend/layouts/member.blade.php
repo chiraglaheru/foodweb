@@ -2,7 +2,7 @@
     <div class="container">
        <div class="section-header text-center white-text">
           <h2>Become a Member</h2>
-          <p>Lorem Ipsum is simply dummy text of</p>
+          <p>Join now & enjoy Premium Benefits</p>
           <span class="line"></span>
        </div>
        <div class="row">

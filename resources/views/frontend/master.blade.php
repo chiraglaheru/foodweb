@@ -36,7 +36,7 @@
       @include('frontend.layouts.banner')
 
       </div>
-      @include('frontend.layouts.ads')
+      {{-- @include('frontend.layouts.ads') --}}
 
       @yield('content')
 

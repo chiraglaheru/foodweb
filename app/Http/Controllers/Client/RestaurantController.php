@@ -126,7 +126,7 @@ class RestaurantController extends Controller
     public function AllProduct(){
         $id = Auth::guard('client')->id();
         $product = Product::where('client_id',$id)->orderBy('id','desc')->get();
-        return view('client.backend.product.all_product', compact('product'));
+        return view('client.backend.menu.product.all_product', compact('product'));
     }
     // End Method
 
@@ -135,7 +135,7 @@ class RestaurantController extends Controller
         $category = Category::latest()->get();
         $city = City::latest()->get();
         $menu = Menu::where('client_id',$id)->latest()->get();
-        return view('client.backend.product.add_product', compact('category','city','menu'));
+        return view('client.backend.menu.product.add_product', compact('category','city','menu'));
     }
     // End Method
 
@@ -187,7 +187,7 @@ class RestaurantController extends Controller
         $city = City::latest()->get();
         $menu = Menu::where('client_id',$cid)->latest()->get();
         $product = Product::find($id);
-        return view('client.backend.product.edit_product', compact('category','city','menu','product'));
+        return view('client.backend.menu.product.edit_product', compact('category','city','menu','product'));
     }
     // End Method
 
@@ -285,12 +285,12 @@ class RestaurantController extends Controller
      public function AllGallery(){
         $cid = Auth::guard('client')->id();
         $gallery = Gallery::where('client_id',$cid)->latest()->get();
-        return view('client.backend.gallery.all_gallery', compact('gallery'));
+        return view('client.backend.menu.gallery.all_gallery', compact('gallery'));
     }
     // End Method
 
     public function AddGallery(){
-        return view('client.backend.gallery.add_gallery' );
+        return view('client.backend.menu.gallery.add_gallery' );
     }
     // End Method
 
@@ -324,7 +324,7 @@ class RestaurantController extends Controller
 
      public function EditGallery($id){
         $gallery = Gallery::find($id);
-        return view('client.backend.gallery.edit_gallery',compact('gallery'));
+        return view('client.backend.menu.gallery.edit_gallery',compact('gallery'));
      }
      // End Method
 

@@ -18,7 +18,7 @@
   @php
      $products = App\Models\Product::where('client_id',$client->id)->limit(3)->get();
      $menuNames = $products->map(function($product){
-      return $product->menu->menu_name;
+    //   return $product->menu->menu_name;
      })->toArray();
      $menuNamesString = implode(' . ',$menuNames);
      $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1')->first();
